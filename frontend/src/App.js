@@ -24,6 +24,7 @@ class App extends Component {
       res => {
         console.log(res);
         this.getData();
+        document.getElementById("username-input").value = "";
       }
     );
   }
@@ -38,22 +39,31 @@ class App extends Component {
 
   componentDidMount() {
     this.getData();
+
+    document.getElementById("username-input").addEventListener("keyup", (e) => {
+      e.preventDefault();
+      if (e.keyCode === 13) {
+        document.getElementById("username-btn").click();
+      }
+    })
   }
 
   render() {
     return (
       <div>
-        <p>Working!!!</p>
-        <input id="username-input" placeholder="Username" />
-        <button onClick={() => this.sendReq()}>Add</button>
+        <h2>MERN App</h2>
+        <div className="username-field-container">
+          <input id="username-input" placeholder="Username" />
+          <button id="username-btn" onClick={() => this.sendReq()}>Add</button>
+        </div>
         <div>
           {this.state.data.map(data =>
             data.username != null ?
-              <div key={data._id}>
-                <span>{data.username}</span>
-                <button id={data._id} onClick={
+              <div id="username-element" key={data._id}>
+                <button className="username-delete-btn" id={data._id} onClick={
                   (e) => { this.delUser(e.target.id) }
                 }>X</button>
+                <span>{data.username}</span>
               </div> : null
           )}
         </div>
