@@ -1,3 +1,5 @@
+// .env: ATLAS_URI=mongodb+srv://...?retryWrites=true&w=majority
+
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
