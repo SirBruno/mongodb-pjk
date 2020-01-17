@@ -1,5 +1,4 @@
 const express = require('express');
-const axios = require('axios');
 const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
@@ -11,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false }
 );
 
 const connection = mongoose.connection;
@@ -34,6 +33,13 @@ app.get('/delete', (req, res) => {
   ).catch(
     err => res.status(400).json('Error: ' + err)
   );
+});
+
+app.get('/update', (req, res) => {
+  User.findOneAndUpdate({ 'username': req.query.curname }, { 'username': req.query.newname }, { upsert: true }, function (err, doc) {
+    if (err) return res.send(500, { error: err });
+    return res.send('Succesfully saved.');
+  });
 });
 
 app.listen(5000, () => {

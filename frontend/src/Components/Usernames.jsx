@@ -19,6 +19,18 @@ class Usernames extends Component {
     );
   }
 
+  componentDidMount() {
+    this.props.getData();
+
+    document.getElementById("username-input").addEventListener(
+      "keyup", (e) => {
+        e.preventDefault();
+        if (e.keyCode === 13) {
+          document.getElementById("username-btn").click();
+        }
+      })
+  }
+
   render() {
     return (
       <div>

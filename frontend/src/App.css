@@ -54,3 +54,42 @@ body {
   cursor: pointer;
   color: #777;
 }
+
+/* UPDATE USERNAME */
+.update-username {
+  display: block;
+  margin: 0 auto;
+  max-width: 250px;
+}
+
+.update-username input,
+.update-username button {
+  display: block;
+  margin: 0 auto;
+}
+
+.username-input-field {
+  border: none;
+  height: 40px;
+  background: #eeeeee;
+  padding: 0 0 0 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.username-input-field:focus {
+  outline: none;
+}
+
+.username-update-btn {
+  background: #000;
+  color: #fff;
+  border: none;
+  height: 40px;
+  width: 100%;
+}
+
+.username-update-btn:hover {
+  cursor: pointer;
+  background: #777;
+}
