@@ -5,10 +5,7 @@ class Usernames extends Component {
 
   delUser(id) {
     axios.get(`http://localhost:5000/delete?id=${id}`).then(
-      res => {
-        console.log(res);
-        this.props.getData();
-      }
+      () => this.props.getData()
     );
   }
 
@@ -30,7 +27,7 @@ class Usernames extends Component {
           <button id="username-btn" onClick={() => this.addUser()}>Add</button>
         </div>
         <div>
-          {this.props.reqData.map(data =>
+          {this.props.data.map(data =>
             data.username != null ?
               <div id="username-element" key={data._id}>
                 <i className="username-delete-btn fas fa-times" id={data._id} onClick={
