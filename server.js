@@ -36,6 +36,9 @@ app.get('/delete', (req, res) => {
 });
 
 app.get('/update', (req, res) => {
+
+  // curname: CURRENT NAME
+  // newname: NEW NAME
   User.findOneAndUpdate({ 'username': req.query.curname }, { 'username': req.query.newname }, { upsert: true }, function (err, doc) {
     if (err) return res.send(500, { error: err });
     return res.send('Succesfully saved.');

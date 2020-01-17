@@ -6,9 +6,13 @@ class UpdateUsername extends Component {
   updateUser() {
     const curname = document.getElementById("update-input").value;
     const newname = document.getElementById("setNew-input").value;
-    axios.get(`http://localhost:5000/update?curname=${encodeURI(curname)}&newname=${encodeURI(newname)}`).then(
-      response => console.log(response)
-    );
+    const usernames = this.props.data.map(data => data.username);
+
+    usernames.includes(curname) ?
+      axios.get(`http://localhost:5000/update?curname=${encodeURI(curname)}&newname=${encodeURI(newname)}`).then(
+        response => console.log(response)
+      ) : console.log("Username not found!!!");
+
   }
 
   render() {

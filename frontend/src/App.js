@@ -36,7 +36,7 @@ class App extends Component {
 
           <Switch>
             <Route path="/update">
-              <UpdateUsername />
+              <UpdateUsername data={this.state.data} />
             </Route>
             <Route path="/">
               <Usernames getData={() => this.getData()} data={this.state.data} />
